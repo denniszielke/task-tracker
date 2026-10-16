@@ -1,0 +1,46 @@
+{
+  "agents": {
+    "lead": {
+      "persistent_name": "Lead",
+      "universe": "descriptive",
+      "created_at": "2026-10-06T13:28:55.693+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "backend": {
+      "persistent_name": "Backend",
+      "universe": "descriptive",
+      "created_at": "2026-10-06T13:28:55.693+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "frontend": {
+      "persistent_name": "Frontend",
+      "universe": "descriptive",
+      "created_at": "2026-10-06T13:28:55.693+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "tester": {
+      "persistent_name": "Tester",
+      "universe": "descriptive",
+      "created_at": "2026-10-06T13:28:55.693+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "scribe": {
+      "persistent_name": "Scribe",
+      "universe": "descriptive",
+      "created_at": "2026-10-06T13:28:55.693+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "ralph": {
+      "persistent_name": "Ralph",
+      "universe": "descriptive",
+      "created_at": "2026-10-06T13:28:55.693+02:00",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}

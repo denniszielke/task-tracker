@@ -1,0 +1,80 @@
+[
+  {
+    "id": "PU-2401",
+    "owner": "Emma Wilson",
+    "vehicle": "2021 Volvo XC60",
+    "registration": "KP21 LZT",
+    "pickupAddress": {
+      "street": "18 Oakwood Lane",
+      "city": "Manchester"
+    },
+    "pickupAt": "2026-10-06T08:30:00+02:00",
+    "inspectionAt": "2026-10-06T10:00:00+02:00",
+    "status": "In transit"
+  },
+  {
+    "id": "PU-2402",
+    "owner": "Noah Patel",
+    "vehicle": "2019 Audi A4",
+    "registration": "LM19 KDV",
+    "pickupAddress": {
+      "street": "42 Willow Crescent",
+      "city": "Salford"
+    },
+    "pickupAt": "2026-10-06T09:15:00+02:00",
+    "inspectionAt": "2026-10-06T11:00:00+02:00",
+    "status": "Driver assigned"
+  },
+  {
+    "id": "PU-2403",
+    "owner": "Sophie Martin",
+    "vehicle": "2022 Volkswagen Golf",
+    "registration": "RV22 JNX",
+    "pickupAddress": {
+      "street": "7 Beech Road",
+      "city": "Stockport"
+    },
+    "pickupAt": "2026-10-06T10:00:00+02:00",
+    "inspectionAt": "2026-10-06T11:30:00+02:00",
+    "status": "Awaiting pickup"
+  },
+  {
+    "id": "PU-2404",
+    "owner": "James Carter",
+    "vehicle": "2020 BMW 3 Series",
+    "registration": "BC20 WFR",
+    "pickupAddress": {
+      "street": "93 Park Avenue",
+      "city": "Altrincham"
+    },
+    "pickupAt": "2026-10-06T10:45:00+02:00",
+    "inspectionAt": "2026-10-06T12:30:00+02:00",
+    "status": "Driver assigned"
+  },
+  {
+    "id": "PU-2405",
+    "owner": "Mia Thompson",
+    "vehicle": "2018 Ford Fiesta",
+    "registration": "YT68 HPL",
+    "pickupAddress": {
+      "street": "15 Meadow View",
+      "city": "Bolton"
+    },
+    "pickupAt": "2026-10-06T11:30:00+02:00",
+    "inspectionAt": "2026-10-06T13:15:00+02:00",
+    "status": "Awaiting pickup"
+  },
+  {
+    "id": "PU-2406",
+    "owner": "Oliver Green",
+    "vehicle": "2023 Tesla Model 3",
+    "registration": "EV23 RGD",
+    "pickupAddress": {
+      "street": "6 Riverside Walk",
+      "city": "Trafford"
+    },
+    "pickupAt": "2026-10-06T12:15:00+02:00",
+    "inspectionAt": "2026-10-06T13:45:00+02:00",
+    "status": "Awaiting pickup"
+  }
+]

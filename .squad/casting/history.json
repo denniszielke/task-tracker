@@ -1,0 +1,23 @@
+{
+  "universe_usage_history": [
+    {
+      "universe": "descriptive",
+      "assignment_id": "2026-10-06-task-tracker-core-team",
+      "used_at": "2026-10-06T13:28:55.693+02:00"
+    }
+  ],
+  "assignment_cast_snapshots": {
+    "2026-10-06-task-tracker-core-team": {
+      "universe": "descriptive",
+      "agents": {
+        "lead": "Lead",
+        "backend": "Backend",
+        "frontend": "Frontend",
+        "tester": "Tester",
+        "scribe": "Scribe",
+        "ralph": "Ralph"
+      },
+      "created_at": "2026-10-06T13:28:55.693+02:00"
+    }
+  }
+}
