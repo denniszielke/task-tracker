@@ -101,6 +101,20 @@ afterEach(() => {
 describe('classifyDelivery', () => {
   const baseOrder = { status: 'In transit' }
 
+  it('matches all five Late PRD reference orders without consulting the wall clock', () => {
+    const referenceOrders = [
+      { id: 'N-1001', status: 'In transit', inspectionAt: '2026-10-02T11:00:00Z' },
+      { id: 'N-1002', status: 'In transit', inspectionAt: '2026-10-02T13:00:00Z' },
+      { id: 'N-1003', status: 'Delivered', inspectionAt: '2026-10-02T11:00:00Z' },
+      { id: 'N-1004', status: 'In transit' },
+      { id: 'N-1005', status: 'In transit', inspectionAt: '2026-10-02T12:00:00Z' },
+    ]
+    expect(referenceOrders.map((order) => classifyDelivery(order, NOW)))
+      .toEqual(['Late', 'On track', 'Delivered', 'Unknown', 'On track'])
+    expect(classifyDelivery(referenceOrders[4], new Date('2026-10-02T12:00:00.001Z')))
+      .toBe('Late')
+  })
+
   it.each([
     ['before the current instant', '2026-10-02T11:59:59.999Z', 'Late'],
     ['equal to the current instant', '2026-10-02T12:00:00.000Z', 'On track'],
