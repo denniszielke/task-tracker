@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import orders from './data/orders.json'
 import { classifyDelivery } from './classifyDelivery'
+import NotificationCenter from './notifications/NotificationCenter'
+import { useNotificationService } from './notifications/useNotifications'
 import './App.css'
 
 const filters = ['All', 'Late', 'Awaiting pickup', 'Driver assigned', 'In transit']
@@ -190,10 +192,18 @@ function OrderCard({ order }) {
   )
 }
 
-function App({ now = Date.now, refreshIntervalMs = 60_000 }) {
+function App({ now = Date.now, refreshIntervalMs = 60_000, notificationService }) {
   const [activeFilter, setActiveFilter] = useState('All')
   const [query, setQuery] = useState('')
   const [currentInstant, setCurrentInstant] = useState(() => now())
+  const notifications = useNotificationService({ notificationService, now, currentInstant })
+  const orderOverrides = notifications.snapshot.ok
+    ? notifications.snapshot.value.orderOverrides
+    : null
+  const displayedOrders = useMemo(() => orders.map((order) => ({
+    ...order,
+    ...(orderOverrides?.[order.id] ? { status: orderOverrides[order.id].status } : {}),
+  })), [orderOverrides])
 
   useEffect(() => {
     const intervalId = globalThis.setInterval(() => {
@@ -207,7 +217,7 @@ function App({ now = Date.now, refreshIntervalMs = 60_000 }) {
     try {
       return {
         error: null,
-        orders: orders.map((order) => ({
+        orders: displayedOrders.map((order) => ({
           ...order,
           deliveryClassification: classifyDelivery(order, currentInstant),
         })),
@@ -215,7 +225,7 @@ function App({ now = Date.now, refreshIntervalMs = 60_000 }) {
     } catch (error) {
       return { error, orders: [] }
     }
-  }, [currentInstant])
+  }, [currentInstant, displayedOrders])
 
   useEffect(() => {
     if (schedule.error) {
@@ -259,8 +269,8 @@ function App({ now = Date.now, refreshIntervalMs = 60_000 }) {
 
   const summary = {
     total: orders.length,
-    inTransit: orders.filter((order) => order.status === 'In transit').length,
-    waiting: orders.filter((order) => order.status === 'Awaiting pickup').length,
+    inTransit: displayedOrders.filter((order) => order.status === 'In transit').length,
+    waiting: displayedOrders.filter((order) => order.status === 'Awaiting pickup').length,
   }
 
   return (
@@ -414,6 +424,12 @@ function App({ now = Date.now, refreshIntervalMs = 60_000 }) {
           </>
         )}
       </section>
+      <NotificationCenter
+        service={notifications.service}
+        now={now}
+        orderOptions={orders.map(({ id }) => id)}
+        onUseVolatile={notifications.useVolatile}
+      />
     </main>
   )
 }
